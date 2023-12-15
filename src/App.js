@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import LoginPage from './pages/LoginPage';
+import DashboardPage from './pages/DashboardPage';
+import RegistrationPage from './pages/RegistrationPage';
+import MapView from './pages/MapView';
+import './styles.css';
 
-function App() {
+const App = () => {
+  const friendsPositions = [
+    { username: 'Friend1', position: { latitude: 51.505, longitude: -0.09 } },
+    { username: 'Friend2', position: { latitude: 51.51, longitude: -0.1 } },
+  ];
+
+  const currentUserPosition = {
+    latitude: 51.508,
+    longitude: -0.11,
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/login" component={LoginPage} />
+        <Route
+          path="/dashboard"
+          render={() => (
+            <>
+              <DashboardPage />
+              <MapView
+                friendsPositions={friendsPositions}
+                currentUserPosition={currentUserPosition}
+              />
+            </>
+          )}
+        />
+        <Route path="/register" component={RegistrationPage} />
+      </Switch>
+    </Router>
   );
-}
+};
 
 export default App;
