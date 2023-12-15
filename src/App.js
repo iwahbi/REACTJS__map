@@ -4,8 +4,7 @@ import LoginPage from './pages/LoginPage';
 import DashboardPage from './pages/DashboardPage';
 import RegistrationPage from './pages/RegistrationPage';
 import MapView from './pages/MapView';
-import './styles.css';
-
+import './style/styles.css';
 const App = () => {
   const friendsPositions = [
     { username: 'Friend1', position: { latitude: 51.505, longitude: -0.09 } },

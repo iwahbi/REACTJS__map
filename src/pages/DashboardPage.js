@@ -13,7 +13,7 @@ import {
   deleteCurrentUser,
 } from './api';
 import MapView from './MapView';
-import './styles.css';
+import '../style/styles.css';
 
 const DashboardPage = () => {
   const [friends, setFriends] = useState([]);
